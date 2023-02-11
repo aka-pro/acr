@@ -1,0 +1,32 @@
+name: g22-container  # Name of the container group
+apiVersion: '2021-10-01'
+location: southindia
+properties: # Properties of container group
+  containers: # Array of container instances in the group
+  osType: Linux
+  - name: jenkins # Name of an instance
+    properties: # Properties of an instance
+      image: string # Container image used to create the instance
+      command:
+      - string
+      ports: # External-facing ports exposed on the instance, must also be set in group ipAddress property 
+      - protocol: TCP
+        port: 8080
+      environmentVariables:
+      - name: JENKINS_ADMIN_ID
+        value: admin
+        secureValue: no
+      - name: JENKINS_ADMIN_PASSWORD
+        value: qwerty_1
+        secureValue: no
+      resources:
+        requests:
+          memoryInGB: 1
+          cpu: 1
+  ipAddress:
+    type: Public
+    ports:
+    - port: 80
+      protocol: TCP
+    dnsNameLabel: jenkins-aci
+  sku: standard # SKU for the container group
