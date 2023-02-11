@@ -5,6 +5,11 @@ jenkins:
       users:
        - id: ${JENKINS_ADMIN_ID}
          password: ${JENKINS_ADMIN_PASSWORD}
+  authorizationStrategy:
+    globalMatrix:
+      permissions:
+        - "Overall/Administer:admin"
+        - "Overall/Read:authenticated"
 unclassified:
   location:
     url: http://172.23.240.1:8080/
