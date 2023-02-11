@@ -7,6 +7,10 @@ properties: # Properties of container group
   - name: jenkins # Name of an instance
     properties: # Properties of an instance
       image: string # Container image used to create the instance
+      imageRegistryCredentials:
+      - server: myregistry.azurecr.io
+        username: g22acr
+        password: mypassword
       command:
       - string
       ports: # External-facing ports exposed on the instance, must also be set in group ipAddress property 
